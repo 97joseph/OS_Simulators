@@ -1,0 +1,26 @@
+##
+[Defines]
+  INF_VERSION                = 0x00010005
+  BASE_NAME                  = CourseWork
+  FILE_GUID                  = 58a4b1df-c432-47e0-bb4f-4ea3fbb2538f
+  MODULE_TYPE                = UEFI_APPLICATION
+  VERSION_STRING             = 1.0
+  UEFI_SPECIFICATION_VERSION = 0x0002001E
+  ENTRY_POINT                = UefiMain
+
+[Sources.common]
+  main.c
+  MemoryMap.c
+  ProcessorsInfo.c
+
+##
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+##
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiApplicationEntryPoint
+  UefiLib
+  DebugLib
