@@ -1,0 +1,11 @@
+# Binary files
+*.efi
+*.bin
+hda-contents/*
+!hda-contents/.gitkeep
+
+#IDE files
+.idea
+
+# Build directories
+cmake-build-*

@@ -1,0 +1,3 @@
+add_subdirectory(c_code)
+add_subdirectory(trampoline)
+add_subdirectory(uefi_application)

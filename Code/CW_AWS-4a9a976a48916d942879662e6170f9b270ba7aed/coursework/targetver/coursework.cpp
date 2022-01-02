@@ -47,9 +47,9 @@ typedef double(*func_type)(stack<double>&);
 typedef map<string, func_type> Ops;
 Ops ops;
 
-//ОБЪЯВЛЕНИЕ ФУНКЦИЙ ДЛЯ ВЫЧИСЛЕНИЯ ЗНАЧЕНИЯ ВЫРАЖЕНИЯ, СОДЕРЖАЩЕГО ПЕРЕМЕННЫЕ И ЗАДАННОГО В ВИДЕ СТРОКИ
+
 void ReadExpressionFromStr(std::string inputStr[], std::string& expr, Variables& var, Massives& mas, int quantityVariables); //inputStr: 1-й элемент - выражение, 2-й, 3-й и т.д. - стрики формата: variables_name=variables_value
-string MortalShell(std::string inputStr[], int quantityVariables); // inputStr аналогично функции ReadExpressionFromStr
+string MortalShell(std::string inputStr[], int quantityVariables); // inputStr 
 void CreateSetOfDelimiters();
 bool IsDelimiter(char sym);
 void CreateTokensFromExpression(std::string& expr, tokens& texpr);
@@ -76,10 +76,10 @@ double op_asin(std::stack <double>& s);
 double op_acos(std::stack <double>& s);
 double op_atan(std::stack <double>& s);
 
-// Глобальные переменные:
-HINSTANCE hInst;                                // текущий экземпляр
-WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
-WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+
+HINSTANCE hInst;                                
+WCHAR szTitle[MAX_LOADSTRING];                 
+WCHAR szWindowClass[MAX_LOADSTRING];            
 
 static int window_wight = 800;
 static int window_height = 600;
@@ -88,7 +88,7 @@ static int UX_cord_Y = 20;
 static int step_X = 40;
 static int step_Y = 40;
 
-// Отправить объявления функций, включенных в этот модуль кода:
+
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -110,7 +110,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDC_COURSEWORK, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    // Выполнить инициализацию приложения:
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
@@ -120,7 +119,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // Цикл основного сообщения:
+    
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -135,11 +134,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 
-//
-//  ФУНКЦИЯ: MyRegisterClass()
-//
-//  ЦЕЛЬ: Регистрирует класс окна.
-//
+
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -161,20 +156,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     return RegisterClassExW(&wcex);
 }
 
-//
-//   ФУНКЦИЯ: InitInstance(HINSTANCE, int)
-//
-//   ЦЕЛЬ: Сохраняет маркер экземпляра и создает главное окно
-//
-//   КОММЕНТАРИИ:
-//
-//        В этой функции маркер экземпляра сохраняется в глобальной переменной, а также
-//        создается и выводится главное окно программы.
-//
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
+   hInst = hInstance; 
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, CW_USEDEFAULT, window_wight, window_height, nullptr, nullptr, hInstance, nullptr);
@@ -190,16 +175,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-//
-//  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
-//
-//  WM_COMMAND  - обработать меню приложения
-//  WM_PAINT    - Отрисовка главного окна
-//  WM_DESTROY  - отправить сообщение о выходе и вернуться
-//
-//
+
 
 HWND outcome = (HWND)1, edit_A0 = (HWND)1, edit_A1 = (HWND)1, edit_A2 = (HWND)1, edit_A3 = (HWND)1, edit_A4 = (HWND)1;
 const int BTN_OUTCOME = 1049;
@@ -303,7 +279,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-// Обработчик сообщений для окна "О программе".
+
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
@@ -483,11 +459,11 @@ void CreatePrior() {
 }
 
 void CreatePostfixFromTokens(tokens& texpr, tokens& pexpr) {
-    //Задаем приоритеты операций
+    
     CreatePrior();
     stack <token> TStack;
 
-    //Ловим токены и работаем по алгоритму
+    
     for (int i = 0; i < texpr.size(); i++) {
         switch (texpr[i].type) {
         case var:
